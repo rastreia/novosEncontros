@@ -60,8 +60,6 @@ freq( CADUNICO$cod_abaste_agua_domic_fam[CADUNICO$ind_familia_quilombola_fam == 
 table( CADUNICO$cod_abaste_agua_domic_fam, CADUNICO$ind_parc_mds_fam )
 
 #Gerando gráficos
-library(ggplot2)
-#library(reshape2)
 
 #Possui água canalizada?
 comunidades_sum = plyr::ddply(comunidades_tradicionais, "cod_agua_canalizada_fam", 
@@ -88,13 +86,7 @@ ggplot(comunidades_sum2, aes(x=cod_abaste_agua_domic_fam, y=y))+
 ##########################################################################
 #Verificar concentração de comunidades tracionais sem água por município
 
-#Separando os banco de dados por comunidades tradicionais
-comunidades_tradicionais = CADUNICO[CADUNICO$cod_indigena_reside_fam == 1 |
-                                      CADUNICO$ind_familia_quilombola_fam == 1 |
-                                      CADUNICO$ind_parc_mds_fam != 0, ]
-
-#Verificando a concentração espacial de domicílios de comunidades tradicionais
-#sem água
 freq(comunidades_tradicionais$cd_ibge[comunidades_tradicionais$cod_agua_canalizada_fam == 2])
+
 
 
