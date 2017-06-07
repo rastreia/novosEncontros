@@ -91,6 +91,7 @@ freq(comunidades_tradicionais$cd_ibge[comunidades_tradicionais$cod_agua_canaliza
 
 ###########################################################################
 #Analisando as comunidades com menos acesso à água
+#Comunidades indígenas
 
 freq(comunidades_tradicionais$cod_agua_canalizada_fam, plot=F)
 sem_agua = comunidades_tradicionais[comunidades_tradicionais$cod_agua_canalizada_fam == "Não",]
@@ -111,11 +112,21 @@ separado_ind_per = left_join(separado_ind_div, separado_ind_n) %>%
 separado_ind_per[,-4] %>% xtable
 
 
-group_by(cod_agua_canalizada_fam, add=T) %>%
-  mutate(per = paste0(round(100*count(cod_agua_canalizada_fam)/count, 2), ""))
-
-  
+# Agora para comunidades quilombolas
+separado_qui_n = comunidades_tradicionais %>% group_by(nom_comunidade_quilombola_fam) %>%
+  summarise(n = n())
+separado_qui_div = comunidades_tradicionais %>% group_by(nom_comunidade_quilombola_fam) %>%
   count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_qui_div)[3] = "count"
+
+separado_qui_per = left_join(separado_qui_div, separado_qui_n) %>% 
+  mutate(per = round(count/n, 2))
+#Exportando latex
+separado_qui_per = separado_qui_per[separado_qui_per$cod_agua_canalizada_fam == "Não",] %>%
+  arrange(desc(per))
+separado_qui_per[1:63,-4] %>% xtable %>% print(., tabular.environment = "longtable",
+                                               floating = F)
+
 
   
 
