@@ -12,6 +12,7 @@ library(tidyr)
 library(magrittr)
 library(lubridate)
 library(ggplot2)
+library(xtable)
 
 #####################################
 # Lendo os dados
@@ -88,5 +89,33 @@ ggplot(comunidades_sum2, aes(x=cod_abaste_agua_domic_fam, y=y))+
 
 freq(comunidades_tradicionais$cd_ibge[comunidades_tradicionais$cod_agua_canalizada_fam == 2])
 
+###########################################################################
+#Analisando as comunidades com menos acesso à água
 
+freq(comunidades_tradicionais$cod_agua_canalizada_fam, plot=F)
+sem_agua = comunidades_tradicionais[comunidades_tradicionais$cod_agua_canalizada_fam == "Não",]
+
+freq(sem_agua$nom_povo_indigena_fam, plot=F)
+freq(sem_agua$nom_reserva_indigena_fam, plot=F)
+freq(sem_agua$nom_comunidade_quilombola_fam, plot=F) %>% as.data.frame(., strings)
+
+separado_ind_n = comunidades_tradicionais %>% group_by(nom_povo_indigena_fam) %>%
+  summarise(n = n())
+separado_ind_div = comunidades_tradicionais %>% group_by(nom_povo_indigena_fam) %>%
+  count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_ind_div)[3] = "count"
+
+separado_ind_per = left_join(separado_ind_div, separado_ind_n) %>% 
+  mutate(per = round(count/n, 2))
+#Exportando latex
+separado_ind_per[,-4] %>% xtable
+
+
+group_by(cod_agua_canalizada_fam, add=T) %>%
+  mutate(per = paste0(round(100*count(cod_agua_canalizada_fam)/count, 2), ""))
+
+  
+  count(cod_agua_canalizada_fam) %>% na.omit
+
+  
 
