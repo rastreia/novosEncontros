@@ -124,9 +124,12 @@ separado_qui_per = left_join(separado_qui_div, separado_qui_n) %>%
 #Exportando latex
 separado_qui_per = separado_qui_per[separado_qui_per$cod_agua_canalizada_fam == "Não",] %>%
   arrange(desc(per))
-separado_qui_per[1:63,-4] %>% xtable %>% print(., tabular.environment = "longtable",
+separado_qui_per[,-4] %>% xtable %>% print(., tabular.environment = "longtable",
                                                floating = F)
 
+#TOTAIS dos domicilios sem acesso à água
+sum(separado_ind_per$count[separado_ind_per$nom_povo_indigena_fam != "" &
+                             separado_ind_per$cod_agua_canalizada_fam == "Não"])
 
-  
+sum(separado_qui_per$count[separado_qui_per$cod_agua_canalizada_fam == "Não"])
 
