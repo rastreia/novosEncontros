@@ -119,4 +119,7 @@ left_join(separado_qui_div_vale, separado_qui_n_vale) %>%
   arrange(desc(per)) %>% View
 
 
+#Municípios prioritários:
+# SENHORA DO PORTO, SABINÓPOLIS, SÃO JOSÉ DA SAFIRA, TUMIRITINGA, RESPLENDOR, 
+# JAMPRUCA e AGUA BOA
 
