@@ -45,5 +45,37 @@ comunidades_vale %>% group_by(ind_parc_mds_fam) %>%
 
 #####################################
 #Verificação de acesso à água por comunidade
-comunidades_vale %>% group_by(nom_povo_indigena_fam) %>% count(cod_agua_canalizada_fam)
-comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>% count(cod_agua_canalizada_fam)
+#Índios
+separado_ind_n_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
+  summarise(n = n())
+separado_ind_div_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
+  count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_ind_div_vale)[3] = "count"
+
+separado_ind_per_vale = left_join(separado_ind_div_vale, separado_ind_n_vale) %>% 
+  mutate(per = round(count/n, 2))
+print(separado_ind_per_vale[,-4])
+
+#Quilombolas
+separado_qui_n_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
+  summarise(n = n())
+separado_qui_div_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
+  count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_qui_div_vale)[3] = "count"
+
+separado_qui_per_vale = left_join(separado_qui_div_vale, separado_qui_n_vale) %>% 
+  mutate(per = round(count/n, 2))
+print(separado_qui_per_vale[,-4])
+
+
+#Separando por município
+comunidades_vale %>% group_by(nome_munic) %>% count(nom_povo_indigena_fam) %>% 
+  filter(nom_povo_indigena_fam != "")
+comunidades_vale %>% group_by(nome_munic) %>% count(nom_comunidade_quilombola_fam) %>%
+  filter(nom_comunidade_quilombola_fam != "")
+comunidades_vale %>% group_by(nome_munic) %>% count(ind_parc_mds_fam) %>%
+  na.omit %>% View
+
+
+
+
