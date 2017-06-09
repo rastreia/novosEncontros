@@ -56,6 +56,9 @@ separado_ind_per_vale = left_join(separado_ind_div_vale, separado_ind_n_vale) %>
   mutate(per = round(count/n, 2))
 print(separado_ind_per_vale[,-4])
 
+#Prioridade: KRENAK
+#Total sem água (Kernak + Pataxo) = 13
+
 #Quilombolas
 separado_qui_n_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
   summarise(n = n())
@@ -64,8 +67,36 @@ separado_qui_div_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_
 names(separado_qui_div_vale)[3] = "count"
 
 separado_qui_per_vale = left_join(separado_qui_div_vale, separado_qui_n_vale) %>% 
-  mutate(per = round(count/n, 2))
+  mutate(per = round(count/n, 2)) %>% filter(cod_agua_canalizada_fam == "Não") %>%
+  arrange(desc(per))
 print(separado_qui_per_vale[,-4])
+
+
+#Prioridade CORREGO SAO DOMINGOS, MARITACA, SANTA BARBARA, SAO JOSE DO QUILOMBO,
+# CORREGO MESTRE, SANTA BARBARA E BARRA, QUILOMBO, SESMARIA
+#Total (soma de todos): 130
+sum(separado_qui_per_vale$count[-10])
+
+# Assentados
+separado_ass_n_vale = comunidades_vale %>% group_by(ind_parc_mds_fam) %>%
+  summarise(n = n())
+separado_ass_div_vale = comunidades_vale %>% group_by(ind_parc_mds_fam) %>%
+  count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_ass_div_vale)[3] = "count"
+
+separado_ass_per_vale = left_join(separado_ass_div_vale, separado_ass_n_vale) %>% 
+  mutate(per = round(count/n, 2)) %>% filter(cod_agua_canalizada_fam == "Não") %>%
+  arrange(desc(per))
+print(separado_ass_per_vale[,-4])
+
+#Prioritário: 301 - Família assentada de reforma agrária
+#Total (301 + 205 + 303) = 51
+sum(separado_ass_per_vale$count)
+
+################################
+#TOTAL de selecionados = 194!!!
+51 + 130 + 13
+################################
 
 
 #Separando por município
