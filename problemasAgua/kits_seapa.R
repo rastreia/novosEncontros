@@ -74,8 +74,18 @@ comunidades_vale %>% group_by(nome_munic) %>% count(nom_povo_indigena_fam) %>%
 comunidades_vale %>% group_by(nome_munic) %>% count(nom_comunidade_quilombola_fam) %>%
   filter(nom_comunidade_quilombola_fam != "")
 comunidades_vale %>% group_by(nome_munic) %>% count(ind_parc_mds_fam) %>%
-  na.omit %>% View
+  na.omit %>% arrange(desc(n)) %>% View
 
+#Ranking dos municípios em situação crítica
+separado_qui_n_vale = comunidades_vale %>% group_by(nome_munic) %>%
+  summarise(n = n())
+separado_qui_div_vale = comunidades_vale %>% group_by(nome_munic) %>%
+  count(cod_agua_canalizada_fam) %>% na.omit
+names(separado_qui_div_vale)[3] = "count"
+
+left_join(separado_qui_div_vale, separado_qui_n_vale) %>% 
+  mutate(per = round(count/n, 2)) %>% filter(cod_agua_canalizada_fam == "Não") %>%
+  arrange(desc(per)) %>% View
 
 
 
