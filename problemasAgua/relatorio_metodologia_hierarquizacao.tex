@@ -15,7 +15,7 @@
 \usepackage{TikZ}
 \pagestyle{plain}
 
-\titulo{Nota técnica - Relatório metodológico sobre a seleção de domicílios beneficiados pelo programa Sementes Presentes}
+\titulo{Nota técnica - Relatório metodológico sobre a seleção de domicílios beneficiados pelo programa Novos Encontros}
 
 
 \begin{document}
@@ -49,7 +49,7 @@
 		
 	\section{Metodologia}
 	
-	O estabelecimento de critérios de prioridade para a seleção de domicílios beneficiados pelas ações do programa \textbf{Novos Encontros}, como vimos não é tarefa trivial. Para realizar essa tarefa faz-se necessário recorrer a três fontes de informação, a saber, (1) os critérios dados \textit{a priori} pela diretoria responsável pela gestão das ações, (2) o embasamento teórico vigente acerca da pobreza multidimensional e (3) modelos estatísticos que permitam identificar na realidade imediata de atuação o impacto de variáveis de interesse sobre a condição de pobreza.
+	O estabelecimento de critérios de prioridade para a seleção de domicílios beneficiados pelas ações do programa \textbf{Novos Encontros} não é tarefa trivial. Para realizá-la faz-se necessário recorrer a três fontes de informação, a saber, (1) os critérios dados \textit{a priori} pela diretoria responsável pela gestão das ações, (2) o embasamento teórico vigente acerca da pobreza multidimensional e (3) modelos estatísticos que permitam identificar na realidade imediata de atuação o impacto de variáveis de interesse sobre a condição de pobreza.
 	
 	Os critérios dados \textit{a priori} para hierarquização de domicílios a receberem o auxílio da ação ``Brasil sem Miséria'' são:
 	
@@ -59,31 +59,149 @@
 		\item Domicílios rurais.
 	\end{enumerate}
 
+	Os critérios dados \textit{a priori} para hierarquização de domicílios a receberem o auxílio da ação ``Sementes Presentes'' são:
+	
+	\begin{enumerate}
+		\item Domicílio de família quilombola;
+		\item Domicílio de família indígena;
+		\item Domicílio de comunidade tradicional e
+		\item Faixas de Renda
+	\end{enumerate}
+
 	Apesar de ser uma área de pesquisa profícua, os estudos sobre pobreza multidimensional infelizmente possuem pouca informação empírica que sirva de base para a tomada de decisão política. Desse modo, apresentou-se a possibilidade da elaboração de um modelo estatístico que permitisse verificar dentro do espectro dos beneficiários de programas sociais no Estado de MG, os efeitos de algumas variáveis de interesse sobre a pobreza. Essa análise não visa fornecer dados para investigações gerais ou generalizáveis acerca da pobreza no campo mas orientar a escolha de beneficiários específicos. Desse modo, torna-se interessante a escolha do CADASTRO ÚNICO como base de dados para a elaboração do modelo estatístico. O CADASTRO ÚNICO ``é um conjunto de informações sobre as famílias brasileiras em situação de pobreza e extrema pobreza\footnote{Fonte: Site da Caixa Econômica Federal. Disponível em \url{http://www.caixa.gov.br/cadastros/cadastro-unico/Paginas/default.aspx}, acesso em 08 de junho de 2017.}'' utilizado pelo Governo Federal, Estados e Municípios para a implementação de políticas sociais. Nele são cadastradas famílias que ganham até meio salário mínimo \textit{per capita} ou famílias que ganham até três salários mínimos de renda mensal total. Esse banco de dados representa, portanto, uma parcela da população já pobre. Um modelo estatístico elaborado a partir desses dados nos aponta dentro desse espectro específico, variáveis com impacto nas chances de pobreza. Dito de outra forma, queremos investigar dentro de uma parcela de pessoas pobres, o que faz com que aumentem as chances de cada família estar ou não em situação de extrema pobreza. Para realizar tal feito, escolhemos trabalhar com o modelo logístico hierárquico.
 	
-	\subsection{O modelo hierárquico}
+	\subsection{O modelo logístico hierárquico}
 	
-	O modelo logístico assume uma variável resposta binária e estima chances de sucesso e fracasso para essa variável dadas as demais variáveis de controle inseridas no modelo. Para os fins de nossa análise, escolhemos trabalhar com uma sofisticação a mais, qual seja, a inserção de um intercepto aleatório no modelo, ou seja, a utilização de um modelo hierárquico. Segundo Crepalde e Silveira (2016):
+	O modelo logístico comum assume uma variável resposta binária e estima chances de sucesso e fracasso para essa variável dadas as demais variáveis de controle inseridas no modelo. Para os fins de nossa análise, escolhemos trabalhar com uma sofisticação a mais, qual seja, a inserção de um intercepto aleatório no modelo, ou seja, a utilização de um modelo hierárquico. Segundo Crepalde e Silveira (2016):
 	
 	\begin{citacao}
 	Esses modelos surgiram nos estudos em Ciências da Educação considerando que as variáveis abordadas não deveriam ser vistas no mesmo plano, mas aninham-se de forma hierárquica em níveis diferentes de análise.\footnote{CREPALDE, Neylson João Batista Filho; SILVEIRA, Leonardo Souza. Desempenho universitário no Brasil: estudo sobre desigualdade educacional com dados do Enade 2014. Revista Brasileira de Sociologia-RBS, v. 4, n. 7, 2016. Disponível em \url{http://www.sbsociologia.com.br/revista/index.php/RBS/article/view/155}, acesso em 8 de junho de 2017.}		
 	\end{citacao}
 	
-	Esse modelo possui a vantagem de ``contemplar as correlações e a variação dos coeficientes estimados entre os grupos aninhados, o que escapa aos modelos com apenas um nível\footnote{\textit{ibid.}}''.
+	Esse modelo possui a vantagem de ``contemplar as correlações e a variação dos coeficientes estimados entre os grupos aninhados, o que escapa aos modelos com apenas um nível\footnote{\textit{ibid.}}''. Em termos práticos, o modelo hierárquico nos permite, além de estimar o efeito esperado de cada variável sobre as chances de um determinado domicílio estar em situação de extrema pobreza, estimar o ``efeito-município'', ou seja, o efeito do conjunto de características gerais de cada município sobre as chances de um domicílio estar em situação de extrema pobreza. Para maiores esclarecimentos sobre os procedimentos estatísticos do modelo, ver Crepalde e Silveira (2016)\footnote{\textit{ibid}.} e Raudenbush e Brik (2002)\footnote{RAUDENBUSH, Stephen W.; BRYK, Anthony S. Hierarchical linear models: Applications and data analysis methods. Sage, 2002.}. Os resultados do modelo estimado estão apresentados de forma sucinta no anexo deste documento.
 
-	\ldots
+	\section{Conclusões do estudo}
+	
+	Os resultados do modelo estatístico mostraram que, dentro do contexto de pobreza do Cadastro Único, as variáveis mais importantes para se compreender o fenômeno da extrema pobreza são, respectivamente, \textbf{Tipo de iluminação} do domicílio, se o domicílio \textbf{possui banheiro}, a \textbf{forma de abastecimento de água}, se o domicílio é \textbf{rural} e a \textbf{quantidade de cômodos servindo de dormitório}. Além dessas variáveis, o modelo mostrou que o conjunto de características do município (chamado aqui de ``efeito-município'') responde por 45\% da variância dos dados. Dito de outra forma, quase metade das chances de um domicílio estar em situação de extrema pobreza é explicado pelo município.
+	
+	Com base nesse achado, fizemos o rankeamento dos domicílios a partir dos critérios estabelecidos na ordem explicitada a seguir. Para a ação ``Brasil sem miséria'':
+	
+	\begin{enumerate}
+		\item Faixa de Renda (até R\$85,00 mensais \textit{per capita});
+		\item Não ter recebido Bolsa Família;
+		\item Domicílios rurais;
+		\item O tipo de iluminaçaõ do domicílio;
+		\item Existe banheiro no domicílio e
+		\item Chances estimadas de pobreza para o município (intercepto aleatório do modelo hierárquico).
+	\end{enumerate}
+
+	A partir desses critérios foram selecionados 13.855 domicílios dos quais será feito um corte de 9.000 domicílios devido à quantidade de kits disponíveis para distribuição.
+
+	Para a ação ``Sementes Presentes'':
+	
+	\begin{enumerate}
+		\item Família quilombola;
+		\item Família indígena;
+		\item Comunidade tradicional e 
+		\item Faixas de renda (de R\$85,00 mensais até mais de meio salário mínimo mensal \textit{per capita}).
+	\end{enumerate}
+	
+	A partir desses critérios, será feito um corte de 300.000 domicílios no banco hierarquizado para compor a lista de beneficiados e o cadastro reserva caso haja impossibilidade para algum domicílio selecionado como prioritário receber o benefício.
+	
+	\newpage
+	
+	\postextual
+	
+	\anexos
+	\section*{Anexo 1 - Resultados do modelo estatístico}
+	
+	Foi estimado um modelo logístico multinomial. O modelo pode ser definido pelas seguintes equações:
+	
+	$$log \left( \frac{P(y_{ij}|x_{ij})}{1-P(y_{ij}|x_{ij})} \right) = \beta_{0j} + \beta_{1j}x_{ij} + \beta_{2j}x_{ij} + \beta_{3j}x_{ij} + \beta_{4j}x_{ij} +  \dots  + \beta_{nj}x_{ij}  +  e_{ij} $$
+	
+	$$ \beta_{0j} = \gamma_{00} + U_{0j} $$
+	
+	Os resultados dos modelos estatísticos estimados encontram-se na tabela \ref{table:reg}. O Índice de Correlação Intraclasse (ICC) indica a porcentagem da variância dos dados explicados pelos grupos de 2º nível, neste caso, os municípios\footnote{Ver CREPALDE, Neylson João Batista Filho; SILVEIRA, Leonardo Souza. Desempenho universitário no Brasil: estudo sobre desigualdade educacional com dados do Enade 2014. \textbf{Revista Brasileira de Sociologia-RBS}, v. 4, n. 7, 2016.}. O ICC pode ser definido por
+	
+	$$ICC = \frac{Var(U_{0j})}{Var(U_{0j} + Var(e_{ij}} = \frac{\tau_{00}}{\tau_{00} + \sigma^2} $$
+	
+	O ICC calculado indica que os municípios correspondem a 45,3\% da variância dos dados, ou seja, assumem um peso considerável na estimação de condições de pobreza.
+	
+	\begin{table}[!h]
+		\ibgetab{
+			\centering
+			\caption{Modelos estatísticos}
+			\label{table:reg}
+		}
+		{\begin{tabular}{l c c}
+				\hline
+				& Logístico & Logístico Multinível \\
+				& Razão de chance (\%)  & Razão de chance (\%) \\
+				\hline
+				(Intercepto)                                                 & $9.06^{***}$  & $90.51^{***}$  \\
+				& $(0.01)$      & $(0.04)$      \\
+				Local do Domicílio - Rurais                                & $35.67^{***}$  & $23.11^{***}$  \\
+				& $(0.01)$      & $(0.01)$      \\
+				Qtd de cômodos dormitórios                               & $-24.15^{***}$ & $-32.56^{***}$ \\
+				& $(0.00)$      & $(0.00)$      \\
+				Tem água canalizada - Não                               & $11.14^{***}$  & $7.08^{***}$  \\
+				& $(0.01)$      & $(0.01)$      \\
+				Forma de abastecimento de água &   &   \\
+				Poço ou nascente               & $31.17^{***}$  & $17.47^{***}$  \\
+				& $(0.01)$      & $(0.01)$      \\
+				Cisterna                       & $29.08^{***}$  & $29.39^{***}$  \\
+				& $(0.02)$      & $(0.02)$      \\
+				Outra forma                    & $21.13^{***}$  & $15.85^{***}$  \\
+				& $(0.02)$      & $(0.02)$      \\
+				\textbf{Existência de banheiro} - Não                 & $66.59^{***}$  & $46.43^{***}$  \\
+				& $(0.01)$      & $(0.01)$      \\
+				\textbf{Tipo de iluminação}   &    &    \\
+				Elétrica com medidor comunitário & $11.18^{***}$  & $44.97^{***}$  \\
+				& $(0.01)$      & $(0.01)$      \\
+				Elétrica sem medidor             & $84.78^{***}$  & $53.19^{***}$  \\
+				& $(0.02)$      & $(0.02)$      \\
+				Óleo, querosene ou gás           & $77.33^{***}$  & $68.46^{***}$  \\
+				& $(0.03)$      & $(0.03)$      \\
+				Vela                             & $144.19^{***}$  & $120.53^{***}$  \\
+				& $(0.04)$      & $(0.04)$      \\
+				Outra forma                      & $67.17^{***}$  & $39.07^{***}$  \\
+				& $(0.03)$      & $(0.02)$      \\
+				\hline
+				AIC                                                         & 846088.62     & 771288.68     \\
+				BIC                                                         & 846236.41     & 771447.83     \\
+				Log Likelihood                                              & -423031.31    & -385630.34    \\
+				Deviance                                                    & 846062.62     &               \\
+				Num. obs.                                                   & 639373        & 639373        \\
+				Num. groups: nome\_munic                                    &               & 229           \\
+				
+				\hline
+				\multicolumn{3}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+			\end{tabular}
+		}
+		{\fonte{Elaboração própria a partir de dados do CADUNICO.}}
+	\end{table}
 	
 	
+	Os resultados do modelo estão apresentados em Razão de Chance ($\exp(\beta - 1) * 100$) e podem ser interpretados como porcentagens de razão de chance em relação ao sucesso de ``ter renda per capita mensal de até R\$85,00''. Os dados indicam que os preditores com maior peso na variável resposta são \textbf{Tipo de Iluminação} e \textbf{Existência de Banheiro}. A figura \ref{intercepto-aleatorio} mostra a variação do intercepto aleatório em torno da média.
+	
+	\begin{figure}
+		\centering
+		\caption{Variação do intercepto aleatório}
+		\label{intercepto-aleatorio}
+		\includegraphics[scale = .4]{intercepto_aleatorio_cadunico.png}
+		\fonte{Elaboração própria.}
+	\end{figure}
 	
 % FINAL
 \newpage
 
-\thispagestyle{empty}
-\begin{tikzpicture}[remember picture, overlay]
-\node[inner sep=0pt] at (current page.center) {%
-	\includegraphics[width=\paperwidth,height=\paperheight]{Contracapa_rastreia.png}%
-};
-\end{tikzpicture}
+
+%\thispagestyle{empty}
+%\begin{tikzpicture}[remember picture, overlay]
+%\node[inner sep=0pt] at (current page.center) {%
+%	\includegraphics[width=\paperwidth,height=\paperheight]{Contracapa_rastreia.png}%
+%};
+%\end{tikzpicture}
 \cleardoublepage{}
 
 \end{document}
