@@ -37,8 +37,11 @@ mulheres[mulheres[,20] == 2 | mulheres[,20] == 3,] %>% count(nome_munic) %>%
 
 #Mulheres sem CPF
 summary(mulheres[,34])
+mulheres[is.na(mulheres[,34]) == T,] %>% count(nome_munic) %>%
+  arrange(desc(n)) %>% print(.)
 
-#Mulheres sem Certidão de Nascimento
+
+#Mulheres sem Carteira de Identidade
 class(mulheres[[35]])
 
 contagem = 0
