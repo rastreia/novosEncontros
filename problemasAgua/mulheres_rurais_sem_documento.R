@@ -53,11 +53,21 @@ for (i in 1:nrow(mulheres)){
 print(contagem)
 # :)
 
+#Mulheres sem carteira de identidade por município
+mulheres[is.na(mulheres$num_identidade_pessoa) == T,] %>% count(nome_munic) %>%
+  arrange(desc(n)) %>% print(.)
+
 #Mulheres sem Carteira de Trabalho
 class(mulheres[,40])
 summary(mulheres[,40])
+
+mulheres[is.na(mulheres$num_cart_trab_prev_soc_pessoa) == T,] %>% count(nome_munic) %>%
+  arrange(desc(n)) %>% print(.)
+
 
 #Mulheres sem título de eleitor
 class(mulheres[,44])
 summary(mulheres[,44])
 
+mulheres[is.na(mulheres$num_titulo_eleitor_pessoa) == T,] %>% count(nome_munic) %>%
+  arrange(desc(n)) %>% print(.)
