@@ -8,8 +8,8 @@
 #Separar aqueles que tem até cistena (até 3)
 
 
-setwd("~/Documentos/CADUNICO")
-source("analise_agua_comunidades_tradicionais.R")
+setwd("~/Documentos/Neylson Crepalde/RASTREIA/CADUNICO")
+source("~/Documentos/Neylson Crepalde/RASTREIA/novosEncontros/problemasAgua/analise_agua_comunidades_tradicionais.R")
 
 #Demandas posteriores ---------------
 #######################
@@ -23,13 +23,12 @@ freq(comunidades_vale$ind_familia_quilombola_fam,plot=F)
 # 203 - família de terreiro - NAO TEM!
 # 205 - família de agricultores familiares
 # 301 - Família assentada da reforma agraria
-# 303 - Família acampada
+# 303 - Família acampada # NÃO PODE
 # 
 comunidades_vale$ind_parc_mds_fam[comunidades_vale$ind_parc_mds_fam == 0] = NA
 comunidades_vale$ind_parc_mds_fam[comunidades_vale$ind_parc_mds_fam != 203 & 
                                     comunidades_vale$ind_parc_mds_fam != 205 &
-                                    comunidades_vale$ind_parc_mds_fam != 301 &
-                                    comunidades_vale$ind_parc_mds_fam != 303] = NA
+                                    comunidades_vale$ind_parc_mds_fam != 301] = NA
 
 freq(comunidades_vale$ind_parc_mds_fam)
 
@@ -100,7 +99,7 @@ sum(separado_ass_per_vale$count)
 
 ################################
 #TOTAL de selecionados = 222!!!
-43 + 40 + 139
+43 + 40 + 258
 ################################
 
 

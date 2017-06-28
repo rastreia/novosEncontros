@@ -3,8 +3,8 @@
 # KITS EMATER - 800 para outras regiões
 ########################################
 
-setwd("~/Documentos/CADUNICO")
-source("analise_agua_comunidades_tradicionais.R")
+setwd("~/Documentos/Neylson Crepalde/RASTREIA/CADUNICO")
+source("~/Documentos/Neylson Crepalde/RASTREIA/novosEncontros/problemasAgua/analise_agua_comunidades_tradicionais.R")
 
 comunidades_exceto_vale = comunidades_tradicionais[comunidades_tradicionais$nome_regiao != "Vale do Rio Doce",]
 freq(comunidades_exceto_vale$cod_indigena_reside_fam, plot=F)
@@ -14,15 +14,18 @@ freq(comunidades_exceto_vale$nome_regiao, plot=F)
 # 203 - família de terreiro
 # 205 - família de agricultores familiares
 # 301 - Família assentada da reforma agraria
-# 303 - Família acampada
+# 303 - Família acampada ***  ACAMPAMENTO NÃO PODE
 # 
 comunidades_exceto_vale$ind_parc_mds_fam[comunidades_exceto_vale$ind_parc_mds_fam == 0] = NA
 comunidades_exceto_vale$ind_parc_mds_fam[comunidades_exceto_vale$ind_parc_mds_fam != 203 & 
                                     comunidades_exceto_vale$ind_parc_mds_fam != 205 &
-                                    comunidades_exceto_vale$ind_parc_mds_fam != 301 &
-                                    comunidades_exceto_vale$ind_parc_mds_fam != 303] = NA
+                                    comunidades_exceto_vale$ind_parc_mds_fam != 301] = NA
 
 freq(comunidades_exceto_vale$ind_parc_mds_fam)
+
+#Separando apenas quem tem banheiro
+
+comunidades_exceto_vale = comunidades_exceto_vale[comunidades_exceto_vale$cod_banheiro_domic_fam == 1,]
 
 ###########################
 #Municípios prioritários:
@@ -72,10 +75,10 @@ separado_ind_per_naovale = left_join(separado_ind_div_naovale, separado_ind_n_na
 separado_ind_per_naovale = separado_ind_per_naovale[separado_ind_per_naovale$nom_povo_indigena_fam != "",]
 print(separado_ind_per_naovale[,-4])
 
-#Prioridade: AMANAYE, ARANA, MAXAKALI, AIKANA, WAYANA, XAKRIABA
-#Total sem água (prioritários) = 318 <-----------
-#Total sem água (todos) = 551
-sum(separado_ind_per_naovale$count[1:4])
+#Prioridade: AMANAYE, ARANA, AIKANA, WAYANA, XAKRIABA
+#Total sem água (prioritários) = 62 (excluindo MACAKALI)
+#Total sem água (todos) = 69
+sum(separado_ind_per_naovale$count)
 
 #Quilombolas
 separado_qui_n_naovale = com_emater %>% group_by(nom_comunidade_quilombola_fam) %>%
@@ -91,32 +94,33 @@ separado_qui_per_naovale = separado_qui_per_naovale[separado_qui_per_naovale$nom
 View(separado_qui_per_naovale[,-4])
 
 # Recorte: acima de 60% [posicao 38]
-# Total (Soma dos prioritários): 484
-# Total (soma de todos): 1967
-sum(separado_qui_per_naovale$count[1:38])
+# Total (Soma dos prioritários): 392
+# Total (soma de todos): 1068
+sum(separado_qui_per_naovale$count[1:43])
 
 # Assentados
-separado_ass_n_naovale = com_emater %>% group_by(ind_parc_mds_fam) %>%
-  summarise(n = n())
-separado_ass_div_naovale = com_emater %>% group_by(ind_parc_mds_fam) %>%
-  count(cod_agua_canalizada_fam) %>% na.omit
-names(separado_ass_div_naovale)[3] = "count"
+#separado_ass_n_naovale = com_emater %>% group_by(ind_parc_mds_fam) %>%
+#  summarise(n = n())
+#separado_ass_div_naovale = com_emater %>% group_by(ind_parc_mds_fam) %>%
+#  count(cod_agua_canalizada_fam) %>% na.omit
+#names(separado_ass_div_naovale)[3] = "count"
 
-separado_ass_per_naovale = left_join(separado_ass_div_naovale, separado_ass_n_naovale) %>% 
-  mutate(per = round(count/n, 2)) %>% filter(cod_agua_canalizada_fam == 2) %>%
-  arrange(desc(per))
-print(separado_ass_per_naovale[,-4])
+#separado_ass_per_naovale = left_join(separado_ass_div_naovale, separado_ass_n_naovale) %>% 
+#  mutate(per = round(count/n, 2)) %>% filter(cod_agua_canalizada_fam == 2) %>%
+#  arrange(desc(per))
+#print(separado_ass_per_naovale[,-4])
 
 #Prioritário: 301 - Família assentada de reforma agrária
 #Total prioritários: 380
-#Total (301 + 205 + 303) = 4102
-sum(separado_ass_per_naovale$count)
+# Família de terreiro: 10
+# Agricultores Familiares: 3660
+#Total (301 + 205 + 303) = 4050
+#sum(separado_ass_per_naovale$count)
 
 ################################
-#TOTAL de selecionados = ...!!!
-290 + 465 + 318
+#TOTAL de selecionados = 1078 (somente assentados)!!!
+62 + 392 + 337      #(337 = assentamentos da SEDA)
 ################################
-
 
 #Separando por município
 com_emater %>% group_by(nome_munic) %>% count(nom_povo_indigena_fam) %>% 
