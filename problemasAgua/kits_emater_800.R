@@ -76,6 +76,7 @@ separado_ind_per_naovale = separado_ind_per_naovale[separado_ind_per_naovale$nom
 print(separado_ind_per_naovale[,-4])
 
 #Prioridade: AMANAYE, ARANA, AIKANA, WAYANA, XAKRIABA
+# 2017:61 | # 2018:1
 #Total sem água (prioritários) = 62 (excluindo MACAKALI)
 #Total sem água (todos) = 69
 sum(separado_ind_per_naovale$count)
@@ -93,7 +94,9 @@ separado_qui_per_naovale = left_join(separado_qui_div_naovale, separado_qui_n_na
 separado_qui_per_naovale = separado_qui_per_naovale[separado_qui_per_naovale$nom_comunidade_quilombola_fam !="",]
 View(separado_qui_per_naovale[,-4])
 
-# Recorte: acima de 40% [posicao 38]
+# Recorte: acima de 40% [posicao 43]
+# Para apenas 2017 corte: acima de 20% [posicao 52]
+
 # Total (Soma dos prioritários): 392
 # Total (soma de todos): 1068
 sum(separado_qui_per_naovale$count[1:43])
@@ -119,7 +122,8 @@ sum(separado_qui_per_naovale$count[1:43])
 
 ################################
 #TOTAL de selecionados = 1078 (somente assentados)!!!
-62 + 392 + 337      #(337 = assentamentos da SEDA)
+62 + 392 + 337      #(337 = assentamentos da SEDA) 2017 + 2018
+61 + 398 + 337      #(337 = assentamentos da SEDA) 2017 apenas!
 ################################
 
 #Separando por município

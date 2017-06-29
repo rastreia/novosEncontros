@@ -49,7 +49,7 @@ comunidades_vale %>% group_by(ind_parc_mds_fam) %>%
 
 #####################################
 #Verificação de acesso à água por comunidade
-#Índios
+#Índios  #todos 2017
 separado_ind_n_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
   summarise(n = n())
 separado_ind_div_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
@@ -63,7 +63,7 @@ print(separado_ind_per_vale[,-4])
 #Prioridade: KRENAK
 #Total com água = 43
 
-#Quilombolas
+#Quilombolas   #todos 2018
 separado_qui_n_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
   summarise(n = n())
 separado_qui_div_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
@@ -99,7 +99,7 @@ sum(separado_ass_per_vale$count)
 
 ################################
 #TOTAL de selecionados = 222!!!
-43 + 40 + 258
+43 + 50 + 258
 ################################
 
 
