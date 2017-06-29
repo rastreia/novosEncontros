@@ -47,8 +47,7 @@ tradicionais = tradicionais[is.na(tradicionais$ind_parc_mds_fam) == F,]
 comunidades_tradicionais = rbind(indigenas, quilombolas, tradicionais) %>% unique
 ###################
 
-comunidades_tradicionais = arrange(comunidades_tradicionais,
-                                   intercepto_aleatorio,fx_rfpc)
+comunidades_tradicionais = arrange(comunidades_tradicionais,fx_rfpc)
 
 dim(comunidades_tradicionais)
 #write.csv(comunidades_tradicionais, "comunidades_tradicionais_cadunico_hierarquizado.csv",

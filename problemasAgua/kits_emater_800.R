@@ -93,7 +93,7 @@ separado_qui_per_naovale = left_join(separado_qui_div_naovale, separado_qui_n_na
 separado_qui_per_naovale = separado_qui_per_naovale[separado_qui_per_naovale$nom_comunidade_quilombola_fam !="",]
 View(separado_qui_per_naovale[,-4])
 
-# Recorte: acima de 60% [posicao 38]
+# Recorte: acima de 40% [posicao 38]
 # Total (Soma dos prioritários): 392
 # Total (soma de todos): 1068
 sum(separado_qui_per_naovale$count[1:43])
