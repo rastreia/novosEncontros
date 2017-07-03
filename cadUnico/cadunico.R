@@ -146,8 +146,8 @@ beta2prob <- function(x){
   return((exp(x)-1)*100)
 }
 
-beta2prob(coef(reg))
-xtable::xtable(as.data.frame(beta2prob(coef(reg))))
+#beta2prob(coef(reg))
+#xtable::xtable(as.data.frame(beta2prob(coef(reg))))
 beta2prob(reg_multi@beta)
 
 ################################
@@ -166,9 +166,16 @@ ggplot(datas.df, aes(x=as_date(datas), y=Freq))+geom_line()+
 
 #### Rankeando os municipios
 # Juntando o resultado do intercepto aleatorio do modelo multinivel
-resultados = coef(reg_multi)
-ranking_munic = data.frame(rownames(resultados$nome_munic),resultados$nome_munic[,1])
-names(ranking_munic) <- c('nome_munic', 'intercepto_aleatorio')
+#resultados = coef(reg_multi)
+
+#ranking_munic = data.frame(rownames(resultados$nome_munic),resultados$nome_munic[,1])
+#names(ranking_munic) <- c('nome_munic', 'intercepto_aleatorio')
+
+#write.csv(ranking_munic, "intercepto_aleatorio.csv", row.names = F,
+#          fileEncoding = "UTF-8")
+
+ranking_munic = fread("intercepto_aleatorio.csv")
+
 View(ranking_munic)
 CADUNICO <- left_join(CADUNICO, ranking_munic)
 head(CADUNICO)
@@ -186,8 +193,8 @@ selecao_acao1 <- arrange(selecao_acao1, desc(cod_iluminacao_domic_fam),
                          desc(cod_banheiro_domic_fam),
                          desc(intercepto_aleatorio))
 View(selecao_acao1)
-write.table(selecao_acao1, 'selecionados_acao1.csv', 
-            sep=',', row.names = F, fileEncoding = 'UTF-8')
+#write.csv2(selecao_acao1, 'selecionados_acao1.csv', 
+#            row.names = F, fileEncoding = 'UTF-8')
 
 #############################################
 # Variáveis importantes
@@ -259,7 +266,7 @@ gc()
 
 selecao_acao2 = CADUNICO
 
-selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 0] = 999
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 0] = NA
 
 # Filtrando por se tem agua canalizada, depois cat de renda, 
 # depois comunidades tradicionais
