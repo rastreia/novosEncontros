@@ -8,8 +8,8 @@
 #Separar aqueles que tem até cistena (até 3)
 
 
-setwd("~/Documentos/Neylson Crepalde/RASTREIA/CADUNICO")
-source("~/Documentos/Neylson Crepalde/RASTREIA/novosEncontros/problemasAgua/analise_agua_comunidades_tradicionais.R")
+setwd("~/Documentos/CADUNICO")
+source("analise_agua_comunidades_tradicionais.R")
 
 #Demandas posteriores ---------------
 #######################
@@ -23,12 +23,13 @@ freq(comunidades_vale$ind_familia_quilombola_fam,plot=F)
 # 203 - família de terreiro - NAO TEM!
 # 205 - família de agricultores familiares
 # 301 - Família assentada da reforma agraria
-# 303 - Família acampada # NÃO PODE
+# 303 - Família acampada
 # 
 comunidades_vale$ind_parc_mds_fam[comunidades_vale$ind_parc_mds_fam == 0] = NA
 comunidades_vale$ind_parc_mds_fam[comunidades_vale$ind_parc_mds_fam != 203 & 
                                     comunidades_vale$ind_parc_mds_fam != 205 &
-                                    comunidades_vale$ind_parc_mds_fam != 301] = NA
+                                    comunidades_vale$ind_parc_mds_fam != 301 &
+                                    comunidades_vale$ind_parc_mds_fam != 303] = NA
 
 freq(comunidades_vale$ind_parc_mds_fam)
 
@@ -49,7 +50,7 @@ comunidades_vale %>% group_by(ind_parc_mds_fam) %>%
 
 #####################################
 #Verificação de acesso à água por comunidade
-#Índios  #todos 2017
+#Índios
 separado_ind_n_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
   summarise(n = n())
 separado_ind_div_vale = comunidades_vale %>% group_by(nom_povo_indigena_fam) %>%
@@ -63,7 +64,7 @@ print(separado_ind_per_vale[,-4])
 #Prioridade: KRENAK
 #Total com água = 43
 
-#Quilombolas   #todos 2018
+#Quilombolas
 separado_qui_n_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
   summarise(n = n())
 separado_qui_div_vale = comunidades_vale %>% group_by(nom_comunidade_quilombola_fam) %>%
@@ -99,7 +100,7 @@ sum(separado_ass_per_vale$count)
 
 ################################
 #TOTAL de selecionados = 222!!!
-43 + 50 + 258
+43 + 40 + 139
 ################################
 
 
@@ -127,4 +128,31 @@ left_join(separado_qui_div_vale, separado_qui_n_vale) %>%
 #Municípios prioritários:
 # SENHORA DO PORTO, SABINÓPOLIS, SÃO JOSÉ DA SAFIRA, TUMIRITINGA, RESPLENDOR, 
 # JAMPRUCA e AGUA BOA
+
+###################################################################
+###################################################################
+# Extraindo as listas de municípios
+
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+itabirinha = comunidades_vale[comunidades_vale$nome_munic == "ITABIRINHA",]
+mantena = comunidades_vale[comunidades_vale$nome_munic == "MANTENA",]
+resplendor = comunidades_vale[comunidades_vale$nome_munic == "RESPLENDOR",]
+gvaladares = comunidades_vale[comunidades_vale$nome_munic == "GOVERNADOR VALADARES",]
+itueto = comunidades_vale[comunidades_vale$nome_munic == "SANTA RITA DO ITUETO",]
+mendes_pimentel = comunidades_vale[comunidades_vale$nome_munic == "MENDES PIMENTEL",]
+#nbelem = comunidades_vale[comunidades_vale$nome_munic == "NOVA BELÉM",] não tem!!!
+cpena = comunidades_vale[comunidades_vale$nome_munic == "CONSELHEIRO PENA",]
+
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
 
