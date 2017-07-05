@@ -52,8 +52,8 @@ View(dicpes)
 #names(CADPES2) <- names(CADPES1)
 
 #CADPES <- rbind(CADPES1,CADPES2); rm(CADPES1, CADPES2)
-CADPES <- fread('CADPES.csv')
-gc()
+#CADPES <- fread('CADPES.csv')
+#gc()
 
 #### Já verificamos duplicidade de CPF's #####
 #########################
@@ -68,11 +68,11 @@ CADUNICO <- left_join(CADUNICO, metas) # faz o merge
 
 ###############################################
 # Extraindo municípios sem energia elétrica:
-freq(CADUNICO$cod_iluminacao_domic_fam, plot=F)
-munic_sem_luz <-  CADUNICO[CADUNICO$cod_iluminacao_domic_fam == 4 |
-                             CADUNICO$cod_iluminacao_domic_fam == 5 |
-                             CADUNICO$cod_iluminacao_domic_fam == 6,]
-munic_sem_luz %<>% arrange(desc(cod_iluminacao_domic_fam))
+#freq(CADUNICO$cod_iluminacao_domic_fam, plot=F)
+#munic_sem_luz <-  CADUNICO[CADUNICO$cod_iluminacao_domic_fam == 4 |
+#                             CADUNICO$cod_iluminacao_domic_fam == 5 |
+#                             CADUNICO$cod_iluminacao_domic_fam == 6,]
+#munic_sem_luz %<>% arrange(desc(cod_iluminacao_domic_fam))
 #write.csv(munic_sem_luz, "municipios_sem_energia.csv",
 #          row.names = F, fileEncoding = "UTF-8")
 
@@ -117,21 +117,21 @@ levels(CADUNICO$cod_iluminacao_domic_fam) <- c('Elétrica com medidor próprio',
 #summary(reg)
 
 # Tentando um modelo logístico hierárquico
-reg_multi <- glmer(pobreza ~ cod_local_domic_fam + (1 | nome_munic) +
-                     qtd_comodos_dormitorio_fam + cod_agua_canalizada_fam +
-                     cod_abaste_agua_domic_fam + cod_banheiro_domic_fam +
-                     cod_iluminacao_domic_fam,
-                   data = CADUNICO, family = binomial(link='logit'))
-summary(reg_multi)
-ICC = var(reg_multi@u) / (var(reg_multi@u)+var(residuals(reg_multi)))
-lrtest(reg, reg_multi)
-plotREsim(REsim(reg_multi))
+#reg_multi <- glmer(pobreza ~ cod_local_domic_fam + (1 | nome_munic) +
+#                     qtd_comodos_dormitorio_fam + cod_agua_canalizada_fam +
+#                     cod_abaste_agua_domic_fam + cod_banheiro_domic_fam +
+#                     cod_iluminacao_domic_fam,
+#                   data = CADUNICO, family = binomial(link='logit'))
+#summary(reg_multi)
+#ICC = var(reg_multi@u) / (var(reg_multi@u)+var(residuals(reg_multi)))
+#lrtest(reg, reg_multi)
+#plotREsim(REsim(reg_multi))
 
 #Gerando a tabela com os resultados das regressoes
-texreg(list(reg, reg_multi), 
-       custom.model.names = c('Logístico', 'Logístico Multinível'),
-       center = F, caption.above = T, 
-       caption = 'Modelos estatísticos')
+#texreg(list(reg, reg_multi), 
+#       custom.model.names = c('Logístico', 'Logístico Multinível'),
+#       center = F, caption.above = T, 
+#       caption = 'Modelos estatísticos')
 
 
 #reg_multi_effale <- glmer(pobreza ~ cod_local_domic_fam +
@@ -148,19 +148,19 @@ beta2prob <- function(x){
 
 #beta2prob(coef(reg))
 #xtable::xtable(as.data.frame(beta2prob(coef(reg))))
-beta2prob(reg_multi@beta)
+#beta2prob(reg_multi@beta)
 
 ################################
 # vendo a data do cadastramento
 
-datas <- CADUNICO[,4] %>% ymd %>% as_date
-datas.df <- table(datas) %>% as.data.frame(.,stringsAsFactors=F)
-limits = c(20140101,20170101)
-limits %<>% ymd %>% as_date
-ggplot(datas.df, aes(x=as_date(datas), y=Freq))+geom_line()+
-  scale_x_date(date_minor_breaks = '1 year', date_breaks = '1 year',
-               date_labels = '%Y', limits = limits)+
-  scale_y_continuous(limits = c(0, 1000))
+#datas <- CADUNICO[,4] %>% ymd %>% as_date
+#datas.df <- table(datas) %>% as.data.frame(.,stringsAsFactors=F)
+#limits = c(20140101,20170101)
+#limits %<>% ymd %>% as_date
+#ggplot(datas.df, aes(x=as_date(datas), y=Freq))+geom_line()+
+#  scale_x_date(date_minor_breaks = '1 year', date_breaks = '1 year',
+#               date_labels = '%Y', limits = limits)+
+#  scale_y_continuous(limits = c(0, 1000))
 ################################
 
 
@@ -188,11 +188,13 @@ head(CADUNICO)
 #tenham recebido Bolsa Família
 rurais = CADUNICO[CADUNICO$cod_local_domic_fam == 'Rurais',]
 
-selecao_acao1 <- CADUNICO[CADUNICO$fx_rfpc == 1 & CADUNICO$marc_pbf == 0 & CADUNICO$cod_local_domic_fam == 'Rurais',]
-selecao_acao1 <- arrange(selecao_acao1, desc(cod_iluminacao_domic_fam),
+selecao_acao1 <- CADUNICO[CADUNICO$marc_pbf == 0 & CADUNICO$cod_local_domic_fam == 'Rurais' &
+                          CADUNICO$fx_rfpc != 4,]
+selecao_acao1 <- arrange(selecao_acao1, desc(fx_rfpc),
+                         desc(cod_iluminacao_domic_fam),
                          desc(cod_banheiro_domic_fam),
                          desc(intercepto_aleatorio))
-View(selecao_acao1)
+#View(selecao_acao1)
 #write.csv2(selecao_acao1, 'selecionados_acao1.csv', 
 #            row.names = F, fileEncoding = 'UTF-8')
 
@@ -208,9 +210,9 @@ View(selecao_acao1)
 ##############################################
 ##### FEITO
 #Filtrando os municípios do banco pessoas
-ibge_munics = CADPES$cd_ibge %>% unique
-CADDOM_ibge = CADUNICO$cd_ibge
-linhas = c()
+#ibge_munics = CADPES$cd_ibge %>% unique
+#CADDOM_ibge = CADUNICO$cd_ibge
+#linhas = c()
 
 #for (i in 1:nrow(CADPES)){
 #  for (munic in ibge_munics){
@@ -261,24 +263,18 @@ selec_index = function(num, x=CADDOM_ibge){
 
 ###############################################
 # Ação 2 - Entrega de KIT Alimento e trabalho
-rm(reg)
+#rm(reg)
 gc()
 
-selecao_acao2 = CADUNICO
+selecao_acao2 = CADUNICO[CADUNICO$ano_meta == 2017,]
+freq(selecao_acao2$ano_meta, plot=F)
 
-selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 0] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam==0] = 999
 
-# Filtrando por se tem agua canalizada, depois cat de renda, 
-# depois comunidades tradicionais
-
+# hierarquizando por quilombolas, indigenas, tradicionais, renda
 selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
                         cod_familia_indigena_fam, ind_parc_mds_fam,
                         fx_rfpc)
 
-View(selecao_acao2)
-amostra = selecao_acao2[1:300000,]
-freq(amostra$ano_meta,plot=F)
-View(amostra)
-
-#write.table(amostra, 'selecionados_acao2.csv', sep=',', row.names = F, 
-#            fileEncoding = 'UTF-8')
+library(readr)
+#write_csv(selecao_acao2, 'selecionados_kits_sementes_presentes.csv')
