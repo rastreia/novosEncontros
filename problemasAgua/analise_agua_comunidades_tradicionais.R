@@ -2,7 +2,7 @@
 #RASTREIA
 ################
 
-setwd("~/Documentos/Neylson Crepalde/RASTREIA/CADUNICO")
+setwd("~/Documentos/CADUNICO")
 
 library(data.table)
 library(bit64)
@@ -19,16 +19,17 @@ library(xtable)
 CADUNICO <- fread('CADDOM.csv')
 gc()
 dic <- fread('dicionariodomicilio.csv')
-dicpes <- fread('dicionariopessoa.csv')
-View(dic); View(dicpes)
+View(dic)
 
-# Separando a região de interesse
 metas <- read.csv2('selecao_publico_cadunico.csv',
                    stringsAsFactors = F, header=F, encoding = 'UTF-8')
 names(metas) <- c('cd_ibge','nome_munic','nome_regiao','ano_meta')
-metas$cd_ibge %>% class
 
 CADUNICO <- left_join(CADUNICO, metas) # faz o merge
+
+ranking_munic = fread("intercepto_aleatorio.csv")
+CADUNICO <- left_join(CADUNICO, ranking_munic)
+
 ##########################################
 
 #com_tradicionais[com_tradicionais == 0] = NA
@@ -46,8 +47,6 @@ tradicionais = tradicionais[is.na(tradicionais$ind_parc_mds_fam) == F,]
 
 comunidades_tradicionais = rbind(indigenas, quilombolas, tradicionais) %>% unique
 ###################
-
-comunidades_tradicionais = arrange(comunidades_tradicionais,fx_rfpc)
 
 dim(comunidades_tradicionais)
 #write.csv(comunidades_tradicionais, "comunidades_tradicionais_cadunico_hierarquizado.csv",
