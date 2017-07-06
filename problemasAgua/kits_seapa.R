@@ -142,17 +142,22 @@ itueto = comunidades_vale[comunidades_vale$nome_munic == "SANTA RITA DO ITUETO",
 mendes_pimentel = comunidades_vale[comunidades_vale$nome_munic == "MENDES PIMENTEL",]
 #nbelem = comunidades_vale[comunidades_vale$nome_munic == "NOVA BELÉM",] não tem!!!
 cpena = comunidades_vale[comunidades_vale$nome_munic == "CONSELHEIRO PENA",]
+frei_inocencio = comunidades_vale[comunidades_vale$nome_munic == "FREI INOCÊNCIO",]
+#sardoa = comunidades_vale[comunidades_vale$nome_munic == "SARDOÁ",] não tem""
+coroaci = comunidades_vale[comunidades_vale$nome_munic == "COROACI",]
+tumiritinga = comunidades_vale[comunidades_vale$nome_munic == "TUMIRITINGA",]
+geraldo = comunidades_vale[comunidades_vale$nome_munic == "SÃO GERALDO DA PIEDADE",]
+#felix = comunidades_vale[comunidades_vale$nome_munic == "SÃO FÉLIX DE MINAS",] não tem!!!
+#cuparaque = comunidades_vale[comunidades_vale$nome_munic == "CUPARAQUE",] não tem!!
+central = comunidades_vale[comunidades_vale$nome_munic == "CENTRAL DE MINAS",]
+itanhomi = comunidades_vale[comunidades_vale$nome_munic == "ITANHOMI",]
+#cap_andrade = comunidades_vale[comunidades_vale$nome_munic == "CAPITÃO ANDRADE",] não tem!!!
+#galileia = comunidades_vale[comunidades_vale$nome_munic == "GALILÉIA",] não tem
 
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
-aimores = comunidades_vale[comunidades_vale$nome_munic == "AIMORÉS",]
+munic_emater = rbind(aimores, itabirinha, mantena, resplendor, gvaladares,itueto,
+                     mendes_pimentel, cpena, frei_inocencio, coroaci, tumiritinga, 
+                     geraldo, central, itanhomi)
+nrow(munic_emater)
+
+#write_csv(munic_emater, "municipios_selecionados_irriga_minas2017.csv")
 
