@@ -176,7 +176,7 @@ beta2prob <- function(x){
 
 ranking_munic = fread("intercepto_aleatorio.csv")
 
-View(ranking_munic)
+#View(ranking_munic)
 CADUNICO <- left_join(CADUNICO, ranking_munic)
 head(CADUNICO)
 
@@ -278,3 +278,108 @@ selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
 
 library(readr)
 #write_csv(selecao_acao2, 'selecionados_kits_sementes_presentes.csv')
+
+##########################################################
+#Exportando listas para Almenara, Januária e Montes Claros
+
+#SER Almenara
+almenara = selecao_acao2[selecao_acao2$nome_munic=="ALMENARA",]
+bandeira = selecao_acao2[selecao_acao2$nome_munic=="BANDEIRA",]
+divisopolis = selecao_acao2[selecao_acao2$nome_munic=="DIVISÓPOLIS",]
+felisburgo = selecao_acao2[selecao_acao2$nome_munic=="FELISBURGO",]
+jacinto = selecao_acao2[selecao_acao2$nome_munic=="JACINTO",]
+jequitinhonha = selecao_acao2[selecao_acao2$nome_munic=="JEQUITINHONHA",]
+joaima = selecao_acao2[selecao_acao2$nome_munic=="JOAÍMA",]
+jordania = selecao_acao2[selecao_acao2$nome_munic=="JORDÂNIA",]
+monte_formoso = selecao_acao2[selecao_acao2$nome_munic=="MONTE FORMOSO",]
+palmopolis = selecao_acao2[selecao_acao2$nome_munic=="PALMÓPOLIS",]
+pedra_azul = selecao_acao2[selecao_acao2$nome_munic=="PEDRA AZUL",]
+rio_do_prado = selecao_acao2[selecao_acao2$nome_munic=="RIO DO PRADO",]
+rubim = selecao_acao2[selecao_acao2$nome_munic=="RUBIM",]
+divisa = selecao_acao2[selecao_acao2$nome_munic=="SALTO DA DIVISA",]
+salto = selecao_acao2[selecao_acao2$nome_munic=="SANTA MARIA DO SALTO",]
+stantonio = selecao_acao2[selecao_acao2$nome_munic=="SANTO ANTÔNIO DO JACINTO",]
+mata_verde = selecao_acao2[selecao_acao2$nome_munic=="MATA VERDE",]
+aguas_vermelhas = selecao_acao2[selecao_acao2$nome_munic=="ÁGUAS VERMELHAS",]
+cachoeira = selecao_acao2[selecao_acao2$nome_munic=="CACHOEIRA DE PAJEÚ",]
+curral = selecao_acao2[selecao_acao2$nome_munic=="CURRAL DE DENTRO",]
+divisa_alegre = selecao_acao2[selecao_acao2$nome_munic=="DIVISA ALEGRE",]
+
+sre_almenara = rbind(almenara, bandeira, divisopolis, felisburgo, jacinto,
+                     jequitinhonha, joaima, jordania, monte_formoso, palmopolis,
+                     pedra_azul, rio_do_prado, rubim, divisa, salto, stantonio,
+                     mata_verde, aguas_vermelhas, cachoeira, curral, divisa_alegre)
+
+dim(sre_almenara)
+#write_csv(sre_almenara, "selecionados_sementes_presentes_sre_almenara.csv")
+
+
+### SRE Januária
+januaria = selecao_acao2[selecao_acao2$nome_munic=="JANUÁRIA",]
+manga = selecao_acao2[selecao_acao2$nome_munic=="MANGA",]
+bonito = selecao_acao2[selecao_acao2$nome_munic=="BONITO DE MINAS",]
+conego_marinho = selecao_acao2[selecao_acao2$nome_munic=="CÔNEGO MARINHO",]
+ibiracatu = selecao_acao2[selecao_acao2$nome_munic=="IBIRACATU",]
+icarai = selecao_acao2[selecao_acao2$nome_munic=="ICARAÍ DE MINAS",]
+itacarambi = selecao_acao2[selecao_acao2$nome_munic=="ITACARAMBI",]
+juvenilia = selecao_acao2[selecao_acao2$nome_munic=="JUVENÍLIA",]
+miravania = selecao_acao2[selecao_acao2$nome_munic=="MIRAVÂNIA",]
+montalvania = selecao_acao2[selecao_acao2$nome_munic=="MONTALVÂNIA",]
+pedras = selecao_acao2[selecao_acao2$nome_munic=="PEDRAS DE MARIA DA CRUZ",]
+pintopolis = selecao_acao2[selecao_acao2$nome_munic=="PINTÓPOLIS",]
+sao_francisco = selecao_acao2[selecao_acao2$nome_munic=="SÃO FRANCISCO",]
+missoes = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DAS MISSÕES",]
+ubai = selecao_acao2[selecao_acao2$nome_munic=="UBAÍ",]
+urucuia = selecao_acao2[selecao_acao2$nome_munic=="URUCUIA",]
+varzelandia = selecao_acao2[selecao_acao2$nome_munic=="VARZELÂNDIA",]
+matias_cardoso = selecao_acao2[selecao_acao2$nome_munic=="MATIAS CARDOSO",]
+
+sre_januaria = rbind(januaria, manga, bonito, conego_marinho, ibiracatu,
+                     icarai, itacarambi, juvenilia, miravania, montalvania, 
+                     pedras, pintopolis, sao_francisco, missoes, ubai, urucuia,
+                     varzelandia, matias_cardoso)
+
+#write_csv(sre_januaria, "selecionados_sementes_presentes_sre_januaria.csv")
+
+### SRE Montes CLaros
+montes_claros = selecao_acao2[selecao_acao2$nome_munic=="MONTES CLAROS",]
+campo_azul = selecao_acao2[selecao_acao2$nome_munic=="CAMPO AZUL",]
+japonvar = selecao_acao2[selecao_acao2$nome_munic=="JAPONVAR",]
+lontra = selecao_acao2[selecao_acao2$nome_munic=="LONTRA",]
+patis = selecao_acao2[selecao_acao2$nome_munic=="PATIS",]
+sjdponte = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DA PONTE",]
+bocaiuva = selecao_acao2[selecao_acao2$nome_munic=="BOCAIÚVA",]
+botumirim = selecao_acao2[selecao_acao2$nome_munic=="BOTUMIRIM",]
+brasilia_de_minas = selecao_acao2[selecao_acao2$nome_munic=="BRASÍLIA DE MINAS",]
+capitao_eneas = selecao_acao2[selecao_acao2$nome_munic=="CAPITÃO ENÉAS",]
+claro_dos_pocoes = selecao_acao2[selecao_acao2$nome_munic=="CLARO DOS POÇÕES",]
+coracao_de_jesus = selecao_acao2[selecao_acao2$nome_munic=="CORAÇÃO DE JESUS",]
+cristalia = selecao_acao2[selecao_acao2$nome_munic=="CRISTÁLIA",]
+engenheiro_navarro = selecao_acao2[selecao_acao2$nome_munic=="ENGENHEIRO NAVARRO",]
+francisco_dumont = selecao_acao2[selecao_acao2$nome_munic=="FRANCISCO DUMONT",]
+francisco_sa = selecao_acao2[selecao_acao2$nome_munic=="FRANCISCO SÁ",]
+glaucilandia = selecao_acao2[selecao_acao2$nome_munic=="GLAUCILÂNDIA",]
+grao_mogol = selecao_acao2[selecao_acao2$nome_munic=="GRÃO MOGOL",]
+guaraciama = selecao_acao2[selecao_acao2$nome_munic=="GUARACIAMA",]
+itacambira = selecao_acao2[selecao_acao2$nome_munic=="ITABAMBIRA",]
+juramento = selecao_acao2[selecao_acao2$nome_munic=="JURAMENTO",]
+luislandia = selecao_acao2[selecao_acao2$nome_munic=="LUISLÂNDIA",]
+mirabela = selecao_acao2[selecao_acao2$nome_munic=="MIRABELA",]
+sao_joao_da_lagoa = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DA LAGOA",]
+sao_joao_do_pacui = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DO PACUÍ",]
+josenopolis = selecao_acao2[selecao_acao2$nome_munic=="JOSENÓPOLIS",]
+padre_carvalho = selecao_acao2[selecao_acao2$nome_munic=="PADRE CARVALHO",]
+sao_joao_do_paraiso = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DO PARAÍSO",]
+vargem_grande_rio_pardo = selecao_acao2[selecao_acao2$nome_munic=="VARGEM GRANDE DO RIO PARDO",]
+olhos_dagua = selecao_acao2[selecao_acao2$nome_munic=="OLHOS-D'ÁGUA",]
+
+sre_montes_claros = rbind(montes_claros, campo_azul, japonvar, lontra, patis, sjdponte,
+                          bocaiuva, botumirim, brasilia_de_minas, capitao_eneas, 
+                          claro_dos_pocoes, coracao_de_jesus, cristalia, engenheiro_navarro,
+                          francisco_dumont, francisco_sa, glaucilandia, grao_mogol,
+                          guaraciama, itacambira, juramento, luislandia, mirabela, 
+                          sao_joao_da_lagoa, sao_joao_do_pacui, josenopolis,
+                          padre_carvalho, sao_joao_do_paraiso, vargem_grande_rio_pardo,
+                          olhos_dagua)
+
+#write_csv(sre_montes_claros, "selecionados_sementes_presentes_sre_montes_claros.csv")
