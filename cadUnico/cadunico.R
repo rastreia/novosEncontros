@@ -52,8 +52,8 @@ View(dicpes)
 #names(CADPES2) <- names(CADPES1)
 
 #CADPES <- rbind(CADPES1,CADPES2); rm(CADPES1, CADPES2)
-#CADPES <- fread('CADPES.csv')
-#gc()
+CADPES <- fread('CADPES.csv')
+gc()
 
 #### Já verificamos duplicidade de CPF's #####
 #########################
@@ -278,6 +278,11 @@ selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
 
 library(readr)
 #write_csv(selecao_acao2, 'selecionados_kits_sementes_presentes.csv')
+
+
+### Juntando com o banco de pessoas
+selecao_acao2 = left_join(selecao_acao2, CADPES, by="cod_familiar_fam")
+dim(selecao_acao2)
 
 ##########################################################
 #Exportando listas para Almenara, Januária e Montes Claros
