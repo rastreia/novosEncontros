@@ -279,7 +279,6 @@ selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
 library(readr)
 #write_csv(selecao_acao2, 'selecionados_kits_sementes_presentes.csv')
 
-
 ### Juntando com o banco de pessoas
 selecao_acao2 = left_join(selecao_acao2, CADPES, by="cod_familiar_fam")
 dim(selecao_acao2)
@@ -388,3 +387,18 @@ sre_montes_claros = rbind(montes_claros, campo_azul, japonvar, lontra, patis, sj
                           olhos_dagua)
 
 #write_csv(sre_montes_claros, "selecionados_sementes_presentes_sre_montes_claros.csv")
+
+
+
+#####################################
+#Testes
+almenara %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam, sep=", ")) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço) %>%
+  select_("n","Nome","NIS","CPF","Endereço") %>%
+  write_excel_csv(., "lista_almenara_teste.csv", na = "")
+  
