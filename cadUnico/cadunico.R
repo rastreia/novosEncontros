@@ -660,26 +660,315 @@ dim(sre_almenara)
 
 ### SRE Januária
 
-setwd()
+setwd("~/Documentos/CADUNICO/SRE_Januaria")
 
 januaria = selecao_acao2[selecao_acao2$nome_munic=="JANUÁRIA",]
+januaria  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_januaria_EMATER.csv", na = "")
+
 manga = selecao_acao2[selecao_acao2$nome_munic=="MANGA",]
+manga  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_manga_EMATER.csv", na = "")
+
 bonito = selecao_acao2[selecao_acao2$nome_munic=="BONITO DE MINAS",]
+bonito  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_bonito_EMATER.csv", na = "")
+
 conego_marinho = selecao_acao2[selecao_acao2$nome_munic=="CÔNEGO MARINHO",]
+conego_marinho  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_conego_marinho_EMATER.csv", na = "")
+
 ibiracatu = selecao_acao2[selecao_acao2$nome_munic=="IBIRACATU",]
+ibiracatu  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_ibiracatu_EMATER.csv", na = "")
+
 icarai = selecao_acao2[selecao_acao2$nome_munic=="ICARAÍ DE MINAS",]
+icarai  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_icarai_de_minas_EMATER.csv", na = "")
+
 itacarambi = selecao_acao2[selecao_acao2$nome_munic=="ITACARAMBI",]
+itacarambi  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_itacarambi_EMATER.csv", na = "")
+
 juvenilia = selecao_acao2[selecao_acao2$nome_munic=="JUVENÍLIA",]
+juvenilia  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_juvenilia_EMATER.csv", na = "")
+
 miravania = selecao_acao2[selecao_acao2$nome_munic=="MIRAVÂNIA",]
+miravania  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_miravania_EMATER.csv", na = "")
+
 montalvania = selecao_acao2[selecao_acao2$nome_munic=="MONTALVÂNIA",]
+montalvania  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_montalvania_EMATER.csv", na = "")
+
+
 pedras = selecao_acao2[selecao_acao2$nome_munic=="PEDRAS DE MARIA DA CRUZ",]
+pedras  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_pedras_de_maria_da_cruz_EMATER.csv", na = "")
+
 pintopolis = selecao_acao2[selecao_acao2$nome_munic=="PINTÓPOLIS",]
+pintopolis  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_pintopolis_EMATER.csv", na = "")
+
 sao_francisco = selecao_acao2[selecao_acao2$nome_munic=="SÃO FRANCISCO",]
+sao_francisco  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_sao_francisco_EMATER.csv", na = "")
+
 missoes = selecao_acao2[selecao_acao2$nome_munic=="SÃO JOÃO DAS MISSÕES",]
+missoes  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_sao_joao_das_missoes_EMATER.csv", na = "")
+
 ubai = selecao_acao2[selecao_acao2$nome_munic=="UBAÍ",]
+ubai  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_ubai_EMATER.csv", na = "")
+
 urucuia = selecao_acao2[selecao_acao2$nome_munic=="URUCUIA",]
+urucuia %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_urucuia_EMATER.csv", na = "")
+
 varzelandia = selecao_acao2[selecao_acao2$nome_munic=="VARZELÂNDIA",]
+varzelandia  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_varzelandia_EMATER.csv", na = "")
+
 matias_cardoso = selecao_acao2[selecao_acao2$nome_munic=="MATIAS CARDOSO",]
+matias_cardoso  %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+  mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
+                          nom_logradouro_fam, num_logradouro_fam, 
+                          des_complemento_fam, des_complemento_adic_fam,
+                          num_cep_logradouro_fam)) %>%
+  mutate(n = 1:nrow(.), Nome = nom_pessoa, Apelido = nom_apelido_pessoa,
+         NIS = num_nis_pessoa_atual, 
+         CPF = num_cpf_pessoa, Endereço = Endereço,
+         # Parte da AS
+         Dom_acessa_CRAS = NA, Apto_AS = NA, 
+         # Parte da Emater
+         Renda = NA, DAP = NA, Apto_EMATER = NA, Objetivo = NA, Data = NA) %>%
+  select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
+          "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
+  write_excel_csv(., "lista_matias_cardoso_EMATER.csv", na = "")
+
 
 sre_januaria = rbind(januaria, manga, bonito, conego_marinho, ibiracatu,
                      icarai, itacarambi, juvenilia, miravania, montalvania, 
