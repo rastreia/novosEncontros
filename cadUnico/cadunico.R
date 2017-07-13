@@ -271,10 +271,6 @@ freq(selecao_acao2$ano_meta, plot=F)
 
 selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam==0] = 999
 
-# hierarquizando por quilombolas, indigenas, tradicionais, renda
-selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
-                        cod_familia_indigena_fam, ind_parc_mds_fam,
-                        fx_rfpc)
 
 library(readr)
 #write_csv(selecao_acao2, 'selecionados_kits_sementes_presentes.csv')
@@ -282,6 +278,39 @@ library(readr)
 ### Juntando com o banco de pessoas
 selecao_acao2 = left_join(selecao_acao2, CADPES, by="cod_familiar_fam")
 dim(selecao_acao2)
+
+#### Corrigindo filtros antes de exportar as listas
+
+# Apenas Domicílios Rurais
+selecao_acao2 = selecao_acao2[selecao_acao2$cod_local_domic_fam == "Rurais",]
+selecao_acao2 = selecao_acao2[is.na(selecao_acao2$cod_local_domic_fam) == FALSE,]
+
+# Só até meio salário mínimo
+selecao_acao2 = selecao_acao2[selecao_acao2$fx_rfpc != 4,]
+
+# Tira comunidades tradicionais que não se encaixam no perfil
+# 205 - família de agricultores familiares
+# 301 - Família assentada da reforma agraria
+
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 101] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 201] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 202] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 203] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 204] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 302] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 303] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 304] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 305] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 306] = NA
+selecao_acao2$ind_parc_mds_fam[selecao_acao2$ind_parc_mds_fam == 999] = NA
+
+
+# hierarquizando por quilombolas, indigenas, tradicionais, renda
+selecao_acao2 = arrange(selecao_acao2, ind_familia_quilombola_fam,
+                        cod_familia_indigena_fam, ind_parc_mds_fam,
+                        fx_rfpc)
+
+
 
 ##########################################################
 #Exportando listas para Almenara, Januária e Montes Claros
@@ -291,7 +320,7 @@ dim(selecao_acao2)
 setwd("~/Documentos/CADUNICO/SRE_Almenara")
 
 almenara = selecao_acao2[selecao_acao2$nome_munic=="ALMENARA",]
-almenara %>% filter(cod_parentesco_rf_pessoa == 1) %>%
+almenara %>% filter(cod_parentesco_rf_pessoa == 1) %>% 
   mutate(Endereço = paste(nom_tip_logradouro_fam, nom_titulo_logradouro_fam, 
                           nom_logradouro_fam, num_logradouro_fam, 
                           des_complemento_fam, des_complemento_adic_fam,
