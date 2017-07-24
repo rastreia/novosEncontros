@@ -35,5 +35,3 @@ freq(bd_dez$nome_munic, plot=F)
 # Excluindo domicílios com renda superior a 1/2 salário mínimo
 bd_dez = bd_dez[bd_dez$fx_rfpc != 4,]
 
-freq(bd_dez$fx_rfpc, plot=F)
-
