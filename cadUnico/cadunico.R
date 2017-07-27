@@ -1,6 +1,6 @@
 # CADUNICO
-# Neylson
-# Em andamento...
+# Análises
+# Neylson Crepalde
 ##############
 
 #### Instalar pacotes manualmente com tar.gz
@@ -1556,4 +1556,5 @@ almenara %>% filter(cod_parentesco_rf_pessoa == 1) %>%
   select_("n","Nome","Apelido","NIS","CPF","Endereço", "Dom_acessa_CRAS",
           "Apto_AS","Renda","DAP", "Apto_EMATER","Objetivo","Data") %>%
   write_excel_csv(., "lista_almenara_teste.csv", na = "")
-  
+
+
