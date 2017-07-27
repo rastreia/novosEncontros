@@ -1,6 +1,7 @@
 #Análise de água entre comunidades tradicionais, quilombolas e indígenas
 #RASTREIA
-################
+#Neylson Crepalde
+#######################
 
 setwd("~/Documentos/CADUNICO")
 
@@ -30,6 +31,8 @@ CADUNICO <- left_join(CADUNICO, metas) # faz o merge
 ranking_munic = fread("intercepto_aleatorio.csv")
 CADUNICO <- left_join(CADUNICO, ranking_munic)
 
+CADUNICO <- CADUNICO[CADUNICO$ano_meta == 2017,]   # Apenas meta para 2017
+CADUNICO <- CADUNICO[CADUNICO$cod_local_domic_fam == 2,]   # Apenas domicílios Rurais
 ##########################################
 
 #com_tradicionais[com_tradicionais == 0] = NA
@@ -39,16 +42,18 @@ CADUNICO <- left_join(CADUNICO, ranking_munic)
 #Extraindo apenas domicílios de comunidades tradicionais
 indigenas = CADUNICO[CADUNICO$cod_indigena_reside_fam == 1, ]
 quilombolas = CADUNICO[CADUNICO$ind_familia_quilombola_fam == 1, ]
-tradicionais = CADUNICO[CADUNICO$ind_parc_mds_fam != 0, ]
 
 indigenas = indigenas[is.na(indigenas$cod_indigena_reside_fam) == F,]
 quilombolas = quilombolas[is.na(quilombolas$ind_familia_quilombola_fam) == F,]
-tradicionais = tradicionais[is.na(tradicionais$ind_parc_mds_fam) == F,]
 
-comunidades_tradicionais = rbind(indigenas, quilombolas, tradicionais) %>% unique
+
+comunidades_tradicionais = rbind(indigenas, quilombolas) %>% unique
 ###################
 
 dim(comunidades_tradicionais)
+
+rm(indigenas, quilombolas)
+gc()
 #write.csv(comunidades_tradicionais, "comunidades_tradicionais_cadunico_hierarquizado.csv",
 #          row.names = F, fileEncoding = "UTF-8")
 
