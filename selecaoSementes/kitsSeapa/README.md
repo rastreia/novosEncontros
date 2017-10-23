@@ -1,5 +1,5 @@
 # kitsSeapa
-Conjunto de script construido para execução com a finalidade de extraçãoo de listas para o programa Sementes Presentes
+Conjunto de script construidos com a finalidade de extraçãoo de listas para o programa Sementes Presentes
  
 _____________________________________________________________________________
 > Construção: Neylson Crepalde | R
